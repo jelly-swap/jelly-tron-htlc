@@ -169,7 +169,7 @@ contract HashTimeLock {
 
             string preimage,
             string outputNetwork,
-            string outputAddress,
+            string outputAddress
         )
     {
         LockContract memory c = contracts[id];
