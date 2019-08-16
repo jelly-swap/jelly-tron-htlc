@@ -155,21 +155,21 @@ contract HashTimeLock {
         public
         view
         returns (
-            uint inputAmount;
-            uint outputAmount;
-            uint expiration;
+            uint inputAmount,
+            uint outputAmount,
+            uint expiration,
 
-            bool withdrawn;
-            bool refunded;
+            bool withdrawn,
+            bool refunded,
 
-            bytes32 hashLock;
+            bytes32 hashLock,
 
-            address sender;
-            address receiver;
+            address sender,
+            address receiver,
 
-            string preimage;
-            string outputNetwork;
-            string outputAddress;
+            string preimage,
+            string outputNetwork,
+            string outputAddress,
         )
     {
         LockContract memory c = contracts[id];
