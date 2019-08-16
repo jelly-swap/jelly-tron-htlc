@@ -5,9 +5,9 @@ contract HashTimeLock {
     mapping (bytes32 => LockContract) contracts;
 
     struct LockContract {
-        uint expiration;
         uint inputAmount;
         uint outputAmount;
+        uint expiration;
 
         bool withdrawn;
         bool refunded;
@@ -39,7 +39,7 @@ contract HashTimeLock {
         uint256 inputAmount,
         uint256 outputAmount,
         uint256 expiration,
-
+                
         bytes32 indexed id,
         bytes32 hashLock,
 
@@ -155,21 +155,25 @@ contract HashTimeLock {
         public
         view
         returns (
-            uint expiration,
-            uint inputAmount,
+            uint inputAmount;
+            uint outputAmount;
+            uint expiration;
 
-            bool withdrawn,
-            bool refunded,
+            bool withdrawn;
+            bool refunded;
 
-            bytes32 hashLock,
+            bytes32 hashLock;
 
-            address sender,
-            address receiver,
-            string memory preimage
+            address sender;
+            address receiver;
+
+            string preimage;
+            string outputNetwork;
+            string outputAddress;
         )
     {
         LockContract memory c = contracts[id];
-        return (c.expiration, c.inputAmount, c.withdrawn, c.refunded, c.hashLock, c.sender, c.receiver, c.preimage);
+        return (c.inputAmount, c.outputAmount, c.expiration ,c.withdrawn, c.refunded, c.hashLock, c.sender, c.receiver, c.preimage, c.outputNetwork, c.outputAddress);
     }
 
     function contractExists(bytes32 id)
